@@ -8,15 +8,19 @@ export default function Home() {
   const createThumbnail = useMutation(api.thumbnails.createThumbnail)
   const thumbnails = useQuery(api.thumbnails.getThumbnail)
   return (
-    <main className="">{isSignedIn ?<SignOutButton />:<SignInButton />}
+    <main className="">
     {isSignedIn && (
       <form action="" onSubmit={async (e) =>{
         e.preventDefault();
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
         const title = formData.get("title") as string;
+        const aImage = formData.get("aImage") as string;
+        const bImage = formData.get("bImage") as string;
         await createThumbnail({
           title,
+          aImage,
+          bImage
         })
         form.reset();
       }}>
