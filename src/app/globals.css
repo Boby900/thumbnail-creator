@@ -74,3 +74,6 @@
     @apply bg-background text-foreground;
   }
 }
+.link{
+  @apply hover:text-blue-400 text-blue-200
+}

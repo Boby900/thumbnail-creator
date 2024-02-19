@@ -3,24 +3,26 @@ import { api } from "../../convex/_generated/api";
 import { SignInButton, SignOutButton, auth, useSession } from "@clerk/nextjs";
 import { createThumbnail } from "../../convex/thumbnails";
 import { useMutation, useQuery } from "convex/react";
+import { useConvexAuth } from "convex/react";
+  
+
 export default function Home() {
   const { isSignedIn } = useSession();
+  const { isLoading, isAuthenticated } = useConvexAuth();
   const createThumbnail = useMutation(api.thumbnails.createThumbnail)
   const thumbnails = useQuery(api.thumbnails.getThumbnail)
   return (
     <main className="">
-    {isSignedIn && (
+    {isAuthenticated && (
       <form action="" onSubmit={async (e) =>{
         e.preventDefault();
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
+        console.log(formData)
         const title = formData.get("title") as string;
-        const aImage = formData.get("aImage") as string;
-        const bImage = formData.get("bImage") as string;
+      
         await createThumbnail({
-          title,
-          aImage,
-          bImage
+          title
         })
         form.reset();
       }}>

@@ -10,13 +10,14 @@ const Header = () => {
     <div className="border-b-2">
       <div className="h-16  container flex justify-between items-center">
         <div>ThumbnailCreator</div>
-        <div>
+        <div className="flex gap-6 items-center justify-between  w-[20%]">
           <SignedIn>
-            <Link href="/create">Create Test</Link>
+            <Link href="/dashboard" className="link">Dashboard</Link>
+            <Link href="/create" className="link">Create</Link>
           </SignedIn>
           <SignedOut>
-            <Link href="/pricing">Pricing</Link>
-            <Link href="/about">About</Link>
+            <Link href="/pricing" className="link">Pricing</Link>
+            <Link href="/about" className="link">About</Link>
           </SignedOut>
         </div>
         <div className="flex items-center gap-2">

@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation";
+import { useSession } from "@clerk/nextjs";
 const CreatePage = () => {
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
   const saveStorageId = useMutation(api.thumbnails.createThumbnail);
@@ -18,6 +19,7 @@ const CreatePage = () => {
   const [error, setError] = useState("");
   const { toast } = useToast()
   const router = useRouter()
+
   return (
     <div className="mt-16">
       <h1 className="text-4xl font-bold mb-8">Create Your Own Thumbnail</h1>
