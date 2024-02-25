@@ -1,29 +1,32 @@
 import { mutation, query } from "./_generated/server"
 import { v } from "convex/values"
+import { Id } from "./_generated/dataModel"
 export const createThumbnail = mutation({
         args: {
             title: v.string(),
             aImage: v.string(),
             bImage: v.string(),
-            aVotes: v.number(),
-            bVotes: v.number()
+            
         },
         handler: async (ctx, args) =>{
+         
             const user = await ctx.auth.getUserIdentity();
-            console.log(user)
+          
 
+
+            
             if(!user){
                 throw new Error("you must be logged in!")
             }
             
             
-        const id =  await ctx.db.insert("thumbnails",{
+ return  await ctx.db.insert("thumbnails",{
                 title: args.title,
-                userId: user._id,
+                userId: user.subject,
                 aImage: args.aImage,
                 bImage: args.bImage,
-                aVotes: args.aVotes,
-                bVotes: args.bVotes,
+                aVotes: 0,
+                bVotes: 0,
                 voteIds: []
             })
         }
@@ -40,29 +43,22 @@ export const getThumbnailById = query({
 
 
 export const getThumbnail = query({
-        args:{
-
-        },
-        handler: async (ctx, args) =>{
-            const user = await ctx.auth.getUserIdentity();
-
-            if(!user){
-                return []
-            }
-            
-            
-            return await ctx.db.query("thumbnails").filter(q =>
-                q.eq(q.field("userId"),user.subject))
-                .collect();
-        }
-})
+    args: { thumbnailId: v.id("thumbnails") },
+    handler: async (ctx, args) => {
+      return await ctx.db.get(args.thumbnailId);
+    },
+  });
 
 export const getThumbnailsForUser = query({
-    args: { userId: v.string() },
+    args: {},
     handler: async (ctx, args) => {
+      const user = await ctx.auth.getUserIdentity();
+      if (!user) {
+        return [];
+      }
       return await ctx.db
         .query("thumbnails")
-        .filter((q) => q.eq(q.field("userId"), args.userId))
+        .filter((q) => q.eq(q.field("userId"), user.subject))
         .collect();
     },
   });
@@ -70,7 +66,7 @@ export const getThumbnailsForUser = query({
 
   export const voteOnThumbnail = mutation({
     args: {
-            thumnailId: v.id("thumbnails"),
+            thumbnailId: v.id("thumbnails"),
             imageId: v.string()
     },
     handler: async (ctx, args) =>{
@@ -78,7 +74,7 @@ export const getThumbnailsForUser = query({
         if(!userId){
             throw new Error("you must be logged in to vote")
         }
-        const thumbnail = await ctx.db.get(args.thumnailId);
+        const thumbnail = await ctx.db.get(args.thumbnailId);
         if(!thumbnail){
             throw new Error("Invalid thumbnail")
         }

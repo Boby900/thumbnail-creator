@@ -13,7 +13,7 @@ export default function DashboardPage() {
     const thumbnails = useQuery(api.thumbnails.getThumbnailsForUser)
     return (
     <div>
-       {thumbnails?.map((thumbnail) =>{
+       {thumbnails?.map((thumbnail:any) =>{
         return(
       <Card key={thumbnail._id}>
         <CardHeader>
