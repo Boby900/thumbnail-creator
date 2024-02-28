@@ -2,6 +2,7 @@ import { mutation, query } from "./_generated/server"
 import { v } from "convex/values"
 import { Id } from "./_generated/dataModel"
 export const createThumbnail = mutation({
+        
         args: {
             title: v.string(),
             aImage: v.string(),
@@ -9,7 +10,7 @@ export const createThumbnail = mutation({
             
         },
         handler: async (ctx, args) =>{
-         
+           console.log("server identity", await ctx.auth.getUserIdentity());
             const user = await ctx.auth.getUserIdentity();
           
 

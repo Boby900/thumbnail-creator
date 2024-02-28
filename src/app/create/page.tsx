@@ -3,6 +3,7 @@ import { UploadButton, UploadFileResponse } from "@xixixao/uploadstuff/react";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import Image from "next/image";
+import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { createThumbnail } from "../../../convex/thumbnails";
@@ -11,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation";
 import { useSession } from "@clerk/nextjs";
-
+import { useAuth } from "@clerk/clerk-react";
 const defaultErrorState = {
   title: "",
   imageA: "",
@@ -19,6 +20,11 @@ const defaultErrorState = {
 };
 
 export default function CreatePage() {
+  
+
+const { getToken } = useAuth();
+
+console.log(getToken({ template: "convex" }));
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
   const createThumbnail = useMutation(api.thumbnails.createThumbnail);
   const [imageA, setImageA] = useState("");
