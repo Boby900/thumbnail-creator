@@ -10,7 +10,7 @@ export const createThumbnail = mutation({
             
         },
         handler: async (ctx, args) =>{
-           console.log("server identity", await ctx.auth.getUserIdentity());
+        
             const user = await ctx.auth.getUserIdentity();
           
 

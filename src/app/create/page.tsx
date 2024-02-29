@@ -22,9 +22,7 @@ const defaultErrorState = {
 export default function CreatePage() {
   
 
-const { getToken } = useAuth();
 
-console.log(getToken({ template: "convex" }));
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
   const createThumbnail = useMutation(api.thumbnails.createThumbnail);
   const [imageA, setImageA] = useState("");
