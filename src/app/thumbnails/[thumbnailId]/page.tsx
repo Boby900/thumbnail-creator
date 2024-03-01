@@ -1,5 +1,6 @@
 "use client";
 import _, { divide } from "lodash";
+import { useRouter } from "next/navigation";
 import { api } from "../../../../convex/_generated/api";
 import { v } from "convex/values";
 import { useMutation, useQuery } from "convex/react";
@@ -17,6 +18,7 @@ import { useSession } from "@clerk/nextjs";
 export default function ThumbnailPage() {
   const params = useParams<{ thumbnailId: Id<"thumbnails"> }>();
   const thumbnailId = params.thumbnailId;
+  const router = useRouter();
   const voteOnThumbnail = useMutation(api.thumbnails.voteOnThumbnail);
   const thumbnail = useQuery(api.thumbnails.getThumbnail, {
     thumbnailId,
@@ -79,6 +81,7 @@ export default function ThumbnailPage() {
                   thumbnailId,
                   imageId: firstImageId,
                 });
+                router.push("/");
               }}
               size="lg"
               className="w-fit"
@@ -116,6 +119,7 @@ export default function ThumbnailPage() {
                   thumbnailId,
                   imageId: secondImageId,
                 });
+                router.push("/");
               }}
               size="lg"
               className="w-fit"

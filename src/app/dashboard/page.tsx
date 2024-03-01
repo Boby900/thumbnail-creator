@@ -21,10 +21,10 @@ export default function DashboardPage() {
 
         </CardHeader>
         <CardContent>
-          <p>Card Content</p>
+          <p>{thumbnail.bVotes}</p>
         </CardContent>
         <CardFooter>
-          <p>{thumbnail._creationTime}</p>
+          <p>{thumbnail.aVotes}</p>
         </CardFooter>
       </Card>)})
        }

@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className="border-b-2">
       <div className="h-16  container flex justify-between items-center">
-        <div>ThumbnailCreator</div>
+        <div><Link href="/" className="link">ThumbnailCreator</Link></div>
         <div className="flex gap-6 items-center justify-between  w-[20%]">
           <SignedIn>
             <Link href="/dashboard" className="link">Dashboard</Link>

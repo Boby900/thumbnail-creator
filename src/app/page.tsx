@@ -7,6 +7,7 @@ import { useConvexAuth } from "convex/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import i from './favicon.jpeg'
 
 export default function Home() {
   return (
@@ -28,11 +29,11 @@ export default function Home() {
           <div className="col-span-5">
             <Image
               priority
-              src="/hero.jpeg"
+              src={i}
               alt="mockup"
-              width="600"
-              className="w-full"
-              height="400"
+              width="300"
+              className="sm:max-w-sm lg:max-w-none p-2 mt-2"
+              height="300"
             />
           </div>
         </div>
