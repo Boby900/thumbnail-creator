@@ -4,7 +4,7 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 94%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -29,7 +29,7 @@
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --input: 222, 24%, 20%;
     --ring: 222.2 84% 4.9%;
  
     --radius: 0.5rem;
@@ -75,5 +75,9 @@
   }
 }
 .link{
-  @apply hover:text-blue-400 text-blue-200
+  @apply hover:text-cyan-500 text-cyan-600 text-lg
 }
+button{
+  @apply hover:bg-slate-900
+}
+
