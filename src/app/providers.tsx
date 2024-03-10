@@ -4,10 +4,6 @@ import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { ConvexReactClient } from "convex/react";
 import { ThemeProvider } from "@/app/theme-provider"
 import { PropsWithChildren } from "react";
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
-import CheckoutForm from "@/components/ui/CheckoutForm";
-const stripePromise = loadStripe('pk_test_51MTGWkSCJLPdp7E7LV2XHIjGEG6p7MqJzuZFkouznskmNTUq9VuCPmrYuuhtGA49ERXcEUotMbzoKZkGfTOrqEdX00mAopRyOL');
 const convex = new ConvexReactClient(
   process.env.NEXT_PUBLIC_CONVEX_URL as string
 );
@@ -27,9 +23,6 @@ export function Providers({ children }: PropsWithChildren) {
     >
       <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
      
-      <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm />
-    
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -37,9 +30,7 @@ export function Providers({ children }: PropsWithChildren) {
             disableTransitionOnChange
           >
         {children}
-        </ThemeProvider>
-        </Elements>
-        
+        </ThemeProvider>  
       </ConvexProviderWithClerk>
     </ClerkProvider>
 
