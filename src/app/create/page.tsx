@@ -32,10 +32,10 @@ export default function CreatePage() {
   const router = useRouter();
 
   return (
-    <div className="mt-16">
-      <h1 className="text-4xl font-bold mb-8">Create a Thumbnail Test</h1>
+    <div className="mt-16 ml-4 ">
+      <h1 className="text-4xl font-bold mb-6  ">Create a Thumbnail Test</h1>
 
-      <p className="text-lg max-w-md mb-8">
+      <p className="text-xl max-w-md  mb-10 ml-2 ">
         Create your test so that other people can vote on their favorite
         thumbnail and help you redesign or pick the best options.
       </p>
@@ -92,9 +92,9 @@ export default function CreatePage() {
           router.push(`/thumbnails/${thumbnailId}`);
         }}
       >
-        <div className="flex flex-col gap-4 mb-8">
-          <Label htmlFor="title">Your Test Title</Label>
-          <Input
+        <div className="flex flex-col gap-2 mb-16 w-6/12 md:w-6/12 ">
+          <Label className="text-lg" htmlFor="title">Your Test Title</Label>
+          <Input 
             id="title"
             type="text"
             name="title"
@@ -104,14 +104,14 @@ export default function CreatePage() {
           {errors.title && <div className="text-red-500">{errors.title}</div>}
         </div>
 
-        <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 gap-12 mb-10">
           <div
           
           >
-            <h2 className="text-2xl font-bold">Test Image A</h2>
+            <h2 className="text-2xl font-bold mb-6">Test Image A</h2>
 
             {imageA && (
-              <Image
+              <Image 
                 width="200"
                 height="200"
                 alt="image test a"
@@ -134,11 +134,11 @@ export default function CreatePage() {
               <div className="text-red-500">{errors.imageA}</div>
             )}
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-12 mb-10">
             <div
             
             >
-              <h2 className="text-2xl font-bold">Test Image B</h2>
+              <h2 className="text-2xl font-bold mb-6">Test Image B</h2>
 
               {imageB && (
                 <Image
@@ -167,7 +167,7 @@ export default function CreatePage() {
           </div>
         </div>
 
-        <Button>Create Thumbnail Test</Button>
+        <Button className="font-bold ml-2 mb-20 ">Create Thumbnail Test</Button>
       </form>
     </div>
   );

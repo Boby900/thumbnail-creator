@@ -7,10 +7,10 @@ import  Link  from "next/link";
 
 const Header = () => {
   return (
-    <div className="border-b-2">
-      <div className="h-16  container flex justify-between items-center">
-        <div><Link href="/" className="link">ThumbnailCreator</Link></div>
-        <div className="flex gap-6 items-center justify-between  w-[20%]">
+    <div className="border-b-2 border-slate-300 ">
+      <div className="h-16  container flex justify-between items-center ">
+        <div><Link href="/" className="link ">ThumbnailCreator</Link></div>
+        <div className="flex gap-4 items-center justify-between  w-[10%]">
           <SignedIn>
             <Link href="/dashboard" className="link">Dashboard</Link>
             <Link href="/create" className="link">Create</Link>
