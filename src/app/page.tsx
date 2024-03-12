@@ -1,6 +1,6 @@
 "use client"
 import { api } from "../../convex/_generated/api";
-import { SignInButton, SignOutButton, auth, useSession } from "@clerk/nextjs";
+import { SignInButton, SignOutButton,SignedIn , auth, useSession } from "@clerk/nextjs";
 import { createThumbnail } from "../../convex/thumbnails";
 import { useMutation, useQuery } from "convex/react";
 import { useConvexAuth } from "convex/react";
@@ -22,9 +22,11 @@ export default function Home() {
               Upload your two thumbnails and send links to your friends to help
               you hone in your best design skills.
             </p>
+            <SignedIn>
             <Button asChild>
               <Link href="/create">Get Started</Link>
             </Button>
+            </SignedIn>
           </div>
           <div className="col-span-5">
             <Image
