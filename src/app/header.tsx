@@ -2,10 +2,11 @@
 
 import { SignInButton } from "@clerk/nextjs";
 import { ModeToggle } from "./mode-toggle";
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton,useAuth } from "@clerk/clerk-react";
 import  Link  from "next/link";
 
 const Header = () => {
+  const redirectUrl = useAuth()
   return (
     <div className="border-b-2 border-slate-300 ">
       <div className="h-16  container flex justify-between items-center ">
@@ -21,8 +22,8 @@ const Header = () => {
           </SignedOut>
         </div>
         <div className="flex items-center gap-2">
-        <SignedIn><UserButton /></SignedIn>
-        <SignedOut><SignInButton /></SignedOut>
+        <SignedIn><UserButton afterSignOutUrl={'/'} /></SignedIn>
+        <SignedOut><SignInButton/></SignedOut>
         <ModeToggle />
         </div>
       </div>
