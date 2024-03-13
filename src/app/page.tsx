@@ -7,7 +7,7 @@ import { useConvexAuth } from "convex/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import i from '@/app/favicon.jpeg'
+import i from '@/app/icon.jpg'
 
 export default function Home() {
   return (
