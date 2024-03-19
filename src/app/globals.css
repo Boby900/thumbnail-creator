@@ -75,7 +75,7 @@
   }
 }
 .link{
-  @apply hover:text-cyan-500 text-cyan-600 text-lg
+  @apply text-gray-300 hover:text-gray-500 text-lg
 }
 button{
   @apply hover:bg-slate-900

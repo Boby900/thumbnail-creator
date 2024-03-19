@@ -67,7 +67,7 @@ const Header = () => {
             <Link href="/pricing" className="link hidden sm:block">
               Pricing
             </Link>
-            <Link href="/about" className="link hidden sm:block">
+            <Link href="/about" className="link text-gray-100 hidden sm:block">
               About
             </Link>
           </SignedOut>
