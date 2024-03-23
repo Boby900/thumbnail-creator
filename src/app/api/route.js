@@ -17,8 +17,8 @@ export async function POST(req) {
       success_url: `${origin}/?success=true`,
       cancel_url: `${origin}/?canceled=true`,
     });
-    return NextResponse.redirect(session.url, { status: 303 });
+    return Response.redirect(session.url, { status: 303 });
   } catch (err) {
-    return new NextResponse(err.message, { status: 500 });
+    return new Response(err.message, { status: 500 });
   }
 }
