@@ -9,7 +9,7 @@ export async function POST(req) {
       line_items: [
         {
           // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-          price: "{{PRICE_ID}}",
+          price: process.env.PRICE_ID,
           quantity: 1,
         },
       ],
@@ -19,6 +19,7 @@ export async function POST(req) {
     });
     return Response.redirect(session.url, { status: 303 });
   } catch (err) {
-    return new Response(err.message, { status: 500 });
+    console.log(err)
+    return new Response(err.message);
   }
 }
