@@ -20,7 +20,7 @@ export default function PreviewPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('./api/route.js', {
+    const res = await fetch('/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
