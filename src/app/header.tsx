@@ -55,22 +55,19 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex gap-4 items-center justify-between  w-[10%]">
-          <SignedIn>
+
             <Link href="/dashboard" className="link hidden sm:block">
               Dashboard
             </Link>
             <Link href="/create" className="link hidden sm:block">
               Create
             </Link>
-          </SignedIn>
-          <SignedOut>
-            <Link href="/pricing" className="link hidden sm:block">
+          
+         
+            <Link href="/stripe" className="link hidden sm:block">
               Pricing
             </Link>
-            <Link href="/about" className="link text-gray-100 hidden sm:block">
-              About
-            </Link>
-          </SignedOut>
+   
         </div>
         <div className="flex items-center gap-2">
           <SignedIn>
