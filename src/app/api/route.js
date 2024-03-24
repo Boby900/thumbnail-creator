@@ -17,7 +17,7 @@ export async function POST(req) {
       success_url: `${origin}/?success=true`,
       cancel_url: `${origin}/?canceled=true`,
     });
-    return Response.redirect(session.url, { status: 303 });
+    return Response.redirect(session.url);
   } catch (err) {
     console.log(err)
     return new Response(err.message);
