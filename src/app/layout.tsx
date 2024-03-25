@@ -4,6 +4,7 @@ import "./globals.css";
 import Head from 'next/head';
 import { Providers } from "./providers";
 import Header from "./header";
+import { Footer } from "./footer";
 import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,13 +24,14 @@ export default function RootLayout({
    
       <html lang="en"  suppressHydrationWarning>
        <link rel="icon" href="./favicon.ico" sizes="any" />
-        <body className={inter.className}>
+        <body className={`${inter.className} font-sans `}>
         <link rel="icon" href="/icon.jpg" sizes="any" />
         <Providers>
           <Header />
           <div className="container">
           {children}
           </div>
+          <Footer />
           </Providers>
           <Toaster />
          </body>

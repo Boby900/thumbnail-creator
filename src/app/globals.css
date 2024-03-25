@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+html, body{
+  font-family:  Tahoma, sans-serif;
+ }
 @layer base {
   :root {
     --background: 0 0% 94%;
