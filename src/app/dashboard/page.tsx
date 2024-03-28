@@ -1,5 +1,6 @@
 'use client'
 import { api } from "../../../convex/_generated/api";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -11,6 +12,7 @@ import {
 import { useQuery } from "convex/react";
 export default function DashboardPage() {
     const thumbnails = useQuery(api.thumbnails.getThumbnailsForUser)
+    console.log(thumbnails)
     return (
     <div>
        {thumbnails?.map((thumbnail:any) =>{
@@ -18,6 +20,7 @@ export default function DashboardPage() {
       <Card key={thumbnail._id}>
         <CardHeader>
           <CardTitle>{thumbnail.title}</CardTitle>
+          <Image width={200} height={200} alt="some Image"  src={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/${thumbnail.imageA}`} />
 
         </CardHeader>
         <CardContent>

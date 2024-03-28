@@ -24,6 +24,7 @@ export default function CreatePage() {
 
 
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
+
   const createThumbnail = useMutation(api.thumbnails.createThumbnail);
   const [imageA, setImageA] = useState("");
   const [imageB, setImageB] = useState("");
@@ -117,8 +118,9 @@ export default function CreatePage() {
                 alt="image test a"
                 src={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/${imageA}`}
               />
-            )}
-
+            )
+            }
+          
             <UploadButton
               uploadUrl={generateUploadUrl}
               fileTypes={["image/*"]}
