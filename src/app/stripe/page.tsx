@@ -1,9 +1,10 @@
 "use client";
+
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -13,11 +14,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every rende
-
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ""
 );
 
 
