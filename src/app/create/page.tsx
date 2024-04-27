@@ -9,10 +9,17 @@ import { Button } from "@/components/ui/button";
 import { createThumbnail } from "../../../convex/thumbnails";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "@clerk/nextjs";
 import { useAuth } from "@clerk/clerk-react";
+
+import { Color } from "@tiptap/extension-color";
+import ListItem from "@tiptap/extension-list-item";
+import TextStyle from "@tiptap/extension-text-style";
+import { EditorProvider, useCurrentEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+
 const defaultErrorState = {
   title: "",
   imageA: "",
@@ -20,8 +27,7 @@ const defaultErrorState = {
 };
 
 export default function CreatePage() {
-  
-
+  const { editor } = useCurrentEditor();
 
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
 
@@ -31,7 +37,9 @@ export default function CreatePage() {
   const [errors, setErrors] = useState(defaultErrorState);
   const { toast } = useToast();
   const router = useRouter();
-
+  if (!editor) {
+    return null;
+  }
   return (
     <div className="mt-16 ml-4 ">
       <h1 className="text-4xl font-bold mb-6  ">Create a Thumbnail Test</h1>
@@ -94,33 +102,58 @@ export default function CreatePage() {
         }}
       >
         <div className="flex flex-col gap-2 mb-16 w-6/12 md:w-6/12 ">
-          <Label className="text-lg" htmlFor="title">Your Test Title</Label>
-          <Input 
+          <Label className="text-lg" htmlFor="title">
+            Your Test Title
+          </Label>
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            disabled={!editor.can().chain().focus().toggleBold().run()}
+            className={editor.isActive("bold") ? "is-active" : ""}
+          >
+            bold
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            disabled={!editor.can().chain().focus().toggleItalic().run()}
+            className={editor.isActive("italic") ? "is-active" : ""}
+          >
+            italic
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleStrike().run()}
+            disabled={!editor.can().chain().focus().toggleStrike().run()}
+            className={editor.isActive("strike") ? "is-active" : ""}
+          >
+            strike
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleCode().run()}
+            disabled={!editor.can().chain().focus().toggleCode().run()}
+            className={editor.isActive("code") ? "is-active" : ""}
+          >
+            code
+          </button>
+          <Input
             id="title"
             type="text"
             name="title"
             placeholder="Label your test to make it easier to manage later"
-            
           />
           {errors.title && <div className="text-red-500">{errors.title}</div>}
         </div>
-
         <div className="grid grid-cols-1 gap-12 mb-10">
-          <div
-          
-          >
+          <div>
             <h2 className="text-2xl font-bold mb-6">Test Image A</h2>
 
             {imageA && (
-              <Image 
+              <Image
                 width="200"
                 height="200"
                 alt="image test a"
                 src={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/${imageA}`}
               />
-            )
-            }
-          
+            )}
+
             <UploadButton
               uploadUrl={generateUploadUrl}
               fileTypes={["image/*"]}
@@ -137,9 +170,7 @@ export default function CreatePage() {
             )}
           </div>
           <div className="flex flex-col gap-12 mb-10">
-            <div
-            
-            >
+            <div>
               <h2 className="text-2xl font-bold mb-6">Test Image B</h2>
 
               {imageB && (
@@ -174,5 +205,3 @@ export default function CreatePage() {
     </div>
   );
 }
-
-
