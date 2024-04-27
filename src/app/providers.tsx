@@ -9,7 +9,7 @@ import {loadStripe} from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51MTGWkSCJLPdp7E7LV2XHIjGEG6p7MqJzuZFkouznskmNTUq9VuCPmrYuuhtGA49ERXcEUotMbzoKZkGfTOrqEdX00mAopRyOL');
 const convex = new ConvexReactClient(
-  process.env.NEXT_PUBLIC_CONVEX_URL as string
+  process.env.NEXT_PUBLIC_CONVEX_URL ?? ""
 );
 
 
