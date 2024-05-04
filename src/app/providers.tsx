@@ -2,7 +2,8 @@
 import { ClerkProvider, useAuth } from "@clerk/clerk-react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { ConvexReactClient } from "convex/react";
-import { ThemeProvider } from "@/app/theme-provider"
+
+import { ThemeProvider } from "./theme-provider";
 import { PropsWithChildren } from "react";
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
